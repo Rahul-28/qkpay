@@ -45,4 +45,4 @@ Thumbs.db
 
 #enironment files
 .env
-.env.development
+src/back-end/.env.development
