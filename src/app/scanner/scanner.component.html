@@ -1,0 +1,94 @@
+<nav class="navbar">
+  <div class="navbar-content">
+    <img src="assets/qk-pay.png" alt="Logo" width="120px" />
+  </div>
+</nav>
+<div class="scanner-container">
+  <div class="scanner">
+    <!-- QR Scanner -->
+    <ngx-scanner-qrcode
+      #action="scanner"
+      class="scanner-view"
+      (event)="onEvent($event, action)"
+    ></ngx-scanner-qrcode>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <!-- Start/Stop -->
+      <button
+        class="btn action-btn"
+        [ngClass]="{
+          'btn-info': !action.isStart,
+          'btn-warning': action.isStart
+        }"
+        [disabled]="action.isLoading"
+        (click)="handle(action, action.isStart ? 'stop' : 'start')"
+      >
+        <img
+          [src]="
+            action.isStart
+              ? 'https://id1945.github.io/images/svg/camera-off.svg'
+              : 'https://id1945.github.io/images/svg/camera-on.svg'
+          "
+          alt="Start/Stop Camera"
+        />
+        {{ action.isStart ? "Stop" : "Start" }}
+      </button>
+
+      <!-- Play/Pause -->
+      <button
+        class="btn action-btn"
+        [ngClass]="{
+          'btn-info': !action.isStart,
+          'btn-warning': action.isStart
+        }"
+        [disabled]="!action.isStart"
+        (click)="handle(action, action.isPause ? 'play' : 'pause')"
+      >
+        <img
+          [src]="
+            action.isPause
+              ? 'https://id1945.github.io/images/svg/play.svg'
+              : 'https://id1945.github.io/images/svg/pause.svg'
+          "
+          alt="Play/Pause"
+        />
+        {{ action.isPause ? "Play" : "Pause" }}
+      </button>
+
+      <!-- Torch -->
+      <button
+        class="btn action-btn"
+        [ngClass]="{
+          'btn-info': !action.isTorch,
+          'btn-warning': action.isTorch
+        }"
+        [disabled]="!action.isStart"
+        (click)="action.isTorch = !action.isTorch; handle(action, 'torcher')"
+      >
+        <img
+          [src]="
+            action.isTorch
+              ? 'https://id1945.github.io/images/svg/flash-off.svg'
+              : 'https://id1945.github.io/images/svg/flash-on.svg'
+          "
+          alt="Torch"
+        />
+        {{ action.isTorch ? "Torch Off" : "Torch On" }}
+      </button>
+    </div>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Contact Us</h3>
+      <p>Email: contactcom</p>
+      <p>Phone: +1 (123) 456-7890</p>
+      <p>Address: 123 QKPay Lane, Fintech City</p>
+    </div>
+    <div class="footer-section">
+      <p>&copy; 2025 QKPay. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

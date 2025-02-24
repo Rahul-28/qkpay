@@ -1,0 +1,42 @@
+<div class="container">
+  <!-- Navbar Section -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <img src="assets/qk-pay.png" alt="Logo" width="120px" />
+      @if (loggedAccount !== null) {
+      <button class="logout-button" (click)="logout()">Logout</button>
+      }
+    </div>
+  </nav>
+  <div class="dashboard-container">
+    <div class="dashboard-content">
+      <div class="dashboard-card">
+        <a routerLink="/qr" class="card-link">
+          <img src="assets/qr-code.svg" alt="My QR Code" />
+          <h2>My QR Code</h2>
+        </a>
+      </div>
+
+      <div class="dashboard-card">
+        <a routerLink="/scanner" class="card-link">
+          <img src="assets/qr-scanner.svg" alt="QR Scanner" />
+          <h2>QR Scanner</h2>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>Email: contactcom</p>
+        <p>Phone: +1 (123) 456-7890</p>
+        <p>Address: 123 QKPay Lane, Fintech City</p>
+      </div>
+      <div class="footer-section">
+        <p>&copy; 2025 QKPay. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</div>

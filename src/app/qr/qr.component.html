@@ -1,0 +1,133 @@
+<div class="container">
+  <div class="page-container">
+    <div class="form-wrapper">
+      <form [formGroup]="paymentRequestForm" class="form-container">
+        <div class="form-header">
+          @if (qr_data) {
+          <h1>QR Code Updation</h1>
+          } @else {
+          <h1>QR Code Generation</h1>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="amount">Amount:</label>
+          <input
+            id="amount"
+            formControlName="amount"
+            placeholder="Your Amount"
+            type="number"
+            [value]="paymentRequestForm.get('amount')?.value"
+          />
+          @if (paymentRequestForm.get('amount')!.invalid &&
+          (paymentRequestForm.get('amount')!.dirty ||
+          paymentRequestForm.get('amount')!.touched)) {
+          <div class="error-message">Please provide an Amount.</div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone:</label>
+          <input
+            id="phone"
+            formControlName="phone"
+            placeholder="Your Phone Number"
+            [readOnly]="isUpdateMode"
+          />
+          @if (paymentRequestForm.get('phone')!.invalid &&
+          (paymentRequestForm.get('phone')!.dirty ||
+          paymentRequestForm.get('phone')!.touched)) {
+          <div class="error-message">Please provide an Phone Number.</div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="invoice_month">Invoice Month:</label>
+          <input
+            id="invoice_month"
+            formControlName="invoice_month"
+            type="month"
+            [value]="paymentRequestForm.get('invoice_month')?.value"
+          />
+          @if (paymentRequestForm.get('invoice_month')!.invalid &&
+          (paymentRequestForm.get('invoice_month')!.dirty ||
+          paymentRequestForm.get('invoice_month')!.touched)) {
+          <div class="error-message">Please provide a valid Month.</div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="address_line1">Address Line 1:</label>
+          <input
+            id="address_line1"
+            formControlName="address_line1"
+            placeholder="Your Address Line1"
+            [readOnly]="isUpdateMode"
+          />
+          @if (paymentRequestForm.get('address_line1')!.invalid &&
+          (paymentRequestForm.get('address_line1')!.dirty ||
+          paymentRequestForm.get('address_line1')!.touched)) {
+          <div class="error-message">Please provide an Address.</div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="address_line2">Address Line 2:</label>
+          <input
+            id="address_line2"
+            formControlName="address_line2"
+            placeholder="Your Address Line2"
+            [readOnly]="isUpdateMode"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="zip_code">Zip Code:</label>
+          <input
+            id="zip_code"
+            formControlName="zip_code"
+            placeholder="Your Zip Code"
+            [readOnly]="isUpdateMode"
+          />
+          @if ( paymentRequestForm.get('zip_code')!.invalid &&
+          (paymentRequestForm.get('zip_code')!.dirty ||
+          paymentRequestForm.get('zip_code')!.touched)) {
+          <div class="error-message">Please provide a Zip Code.</div>
+          }
+        </div>
+
+        @if(qr_data) {
+        <div class="form-actions">
+          <button
+            [disabled]="paymentRequestForm.invalid"
+            class="submit-button"
+            (click)="updateQr()"
+          >
+            Update Payment
+          </button>
+        </div>
+        } @else {
+        <div class="form-actions">
+          <button
+            [disabled]="paymentRequestForm.invalid"
+            class="submit-button"
+            (click)="createQr()"
+          >
+            Generate QR Code
+          </button>
+        </div>
+        }
+      </form>
+
+      @if (submitted) {
+      <div class="qr-code-container">
+        <qrcode
+          [qrdata]="jsonizedFormData"
+          [width]="300"
+          [errorCorrectionLevel]="'M'"
+        ></qrcode>
+      </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="page-container">
+    <div class="right-container">
+      <div class="form-container">
+        <div class="form-header">
+          <h1>Login</h1>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm)">
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input
+              id="email"
+              formControlName="email"
+              placeholder="Your Email"
+            />
+            @if( loginForm.get('email')!.invalid &&
+            (loginForm.get('email')!.dirty || loginForm.get('email')!.touched))
+            {
+            <div class="error-message">Please provide an Email.</div>
+            } @if( loginForm.get('email')!.invalid &&
+            loginForm.get('email')!.hasError('email')) {
+            <div class="error-message">Please provide a valid Email.</div>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <div class="password-container">
+              <input
+                id="password"
+                [type]="showPassword ? 'text' : 'password'"
+                formControlName="password"
+                placeholder="Your Password"
+              />
+              <button
+                type="button"
+                class="toggle-button"
+                (click)="this.showPassword = !this.showPassword"
+              >
+                <i
+                  [ngClass]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"
+                ></i>
+              </button>
+            </div>
+            @if( loginForm.get('password')!.invalid &&
+            (loginForm.get('password')!.dirty ||
+            loginForm.get('password')!.touched)) {
+            <div class="error-message">Please provide a Password.</div>
+            }@if(loginForm.get('password')!.hasError('minlength')) {
+            <div class="error-message">
+              Password must contain at least 8 characters.
+            </div>
+            }
+          </div>
+
+          <div class="form-actions">
+            <button [disabled]="loginForm.invalid" class="submit-button">
+              Login
+            </button>
+          </div>
+          <a routerLink="/register" class="redirect-link"
+            ><p>New user? Signup Now !</p></a
+          >
+        </form>
+      </div>
+    </div>
+    <div class="left-container">
+      <!-- Add an image or video here in the future -->
+      <img
+        src="assets/login.svg"
+        alt="login image"
+        width="500px"
+        height="500px"
+      />
+    </div>
+  </div>
+</div>

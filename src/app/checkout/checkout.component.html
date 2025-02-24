@@ -1,0 +1,75 @@
+<div class="back-ground">
+  <nav class="navbar">
+    <div class="navbar-content">
+      <img src="assets/qk-pay.png" alt="Logo" width="120px" />
+    </div>
+  </nav>
+  <div class="container">
+    <div class="content-wrapper">
+      <!-- invoice Details Section -->
+      @if (paymentData) {
+      <div class="invoice-details">
+        <h1 class="heading">Invoice Details</h1>
+        <div>
+          <h1>${{ paymentData.invoice.amount }}</h1>
+        </div>
+        <span>
+          <p>Name</p>
+          <p>{{ paymentData.creator.name }}</p>
+        </span>
+        <span>
+          <p>Email</p>
+          <p>{{ paymentData.creator.email }}</p>
+        </span>
+        <span>
+          <p>Phone No.</p>
+          <p>{{ paymentData.invoice.phone }}</p>
+        </span>
+        <span>
+          <p>Invoice Month</p>
+          <p>{{ paymentData.invoice.invoice_month }}</p>
+        </span>
+        <span>
+          <p>Address Line1</p>
+          <p>{{ paymentData.invoice.address_line1 }}</p>
+        </span>
+        @if(paymentData.invoice.address_line2) {
+        <span>
+          <p>Address Line2</p>
+          <p>{{ paymentData.invoice.address_line2 }}</p>
+        </span>
+        }
+        <span>
+          <p>Zip</p>
+          <p>{{ paymentData.invoice.zip_code }}</p>
+        </span>
+      </div>
+      }
+      <!-- Stripe Payment Section -->
+      <div class="payment-form">
+        <ngx-stripe-elements
+          [stripe]="stripe"
+          [elementsOptions]="elementsOptions"
+        >
+          <ngx-stripe-payment
+            [options]="paymentElementOptions"
+          ></ngx-stripe-payment>
+        </ngx-stripe-elements>
+        <button (click)="pay()">Pay</button>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>Email: contactcom</p>
+        <p>Phone: +1 (123) 456-7890</p>
+        <p>Address: 123 QKPay Lane, Fintech City</p>
+      </div>
+      <div class="footer-section">
+        <p>&copy; 2025 QKPay. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</div>

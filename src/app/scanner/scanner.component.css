@@ -1,0 +1,189 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #333333;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.scanner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background-color: #f0f0f0; /* Theme color: Light gray background */
+  padding: 20px;
+  color: #333333; /* Theme color: Dark gray for text */
+}
+
+/* QR Scanner Section */
+.scanner {
+  max-width: 600px;
+  width: 100%;
+  background: #ffffff; /* Theme color: White background for the scanner card */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  padding: 20px;
+  text-align: center;
+}
+
+/* Scanner View */
+.scanner-view {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #333333; /* Theme color: Dark gray for the scanner view background */
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  background-color: #f0f0f0; /* Theme color: Light gray button background */
+  color: #333333; /* Theme color: Dark gray for text */
+}
+
+.action-btn img {
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+}
+
+.action-btn.btn-info {
+  background-color: #ff9800; /* Theme color: Vibrant orange for info button */
+  color: #ffffff; /* Theme color: White for text */
+}
+
+.action-btn.btn-info:hover {
+  background-color: #cc7a00; /* Darker vibrant orange for hover */
+}
+
+.action-btn.btn-warning {
+  background-color: #f0f0f0; /* Theme color: Light gray for warning button */
+  color: #ff9800; /* Theme color: Vibrant orange for text */
+}
+
+.action-btn.btn-warning:hover {
+  background-color: #ff9800; /* Theme color: Vibrant orange on hover */
+  color: #ffffff; /* Theme color: White for text */
+}
+
+.action-btn.btn-success {
+  background-color: #333333; /* Theme color: Dark gray for success button */
+  color: #ffffff; /* Theme color: White for text */
+}
+
+.action-btn.btn-success:hover {
+  background-color: #1a1a1a; /* Darker gray on hover */
+}
+
+.action-btn:hover {
+  transform: scale(1.05); /* Slight scale effect */
+}
+
+/* File Uploads */
+.file-upload {
+  margin-top: 20px;
+}
+
+.file-upload label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #ff9800; /* Theme color: Vibrant orange for label text */
+}
+
+.file-input {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #333333; /* Theme color: Dark gray for border */
+  border-radius: 5px;
+  font-size: 14px;
+  background: #ffffff; /* Theme color: White for input background */
+  color: #333333; /* Theme color: Dark gray for text */
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #333333;
+  color: #ecf0f1;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.footer-section p {
+  margin: 5px 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-content {
+    padding: 10px 20px;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-section {
+    margin-bottom: 15px;
+  }
+}
